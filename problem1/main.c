@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include <string.h>
+#include <string.h>                                                 
 #include <stdlib.h>
 
 #ifdef DOLOG
 #define LOG(...) fprintf(log, __VA_ARGS__);
 #else
-#define LOG(...)
+#define LOG(...)                                            
 #endif
 
 struct array
-{
+{                                                          // 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
     int *pdata;
     int size;
 };
@@ -38,25 +38,38 @@ void getArray(struct array *parr)
 {
     int size;
     scanf("%d",&size);
+    parr->size = size;
     int arr1 [size];
-    int i;
-    for(i=0; i<size; i++)
+    parr->pdata = malloc(sizeof(int)*parr->size);
+    
+    for(int i=0; i<size; i++)
     {
         int num;
         scanf("%d",&num);
         arr1[i]=num;
+        parr->pdata[i] = arr1[i];
     }
-   /* for(i=0;i<tamaño;i++)
-    {
-        int num;
-        num = arr1[i];
-        printf("%d\n",num);
-    }
-    */
+
+    
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
+    int position = 0;
+    for (int i = 0; i < arrIn1->size; i++)
+    {
+       for (int k = 0; k < arrIn2->size; k++)
+       {
+           if (*(arrIn1->pdata+i) == *(arrIn2->pdata+k))
+           {
+               *(arrOut->pdata+position) = *(arrIn1->pdata+i);
+               position ++;
+           }
+           
+       }
+       
+   }
+   
     
 }
 
