@@ -56,20 +56,35 @@ void getArray(struct array *parr)
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
     int position = 0;
+    int repetido = 0;
+    arrOut->pdata = malloc(50);
     for (int i = 0; i < arrIn1->size; i++)
     {
        for (int k = 0; k < arrIn2->size; k++)
        {
            if (*(arrIn1->pdata+i) == *(arrIn2->pdata+k))
+        {
+           for (int r = 0; r < position; r++)
            {
+              if (*(arrOut->pdata+r) == *(arrIn1->pdata+i))
+              {
+                  repetido = 1;
+              }
+               
+           }
+           if (repetido == 0)
+          {
                *(arrOut->pdata+position) = *(arrIn1->pdata+i);
                position ++;
            }
+           repetido = 0;
+           
+       }  
            
        }
        
    }
-   
+   arrOut->size = position;
     
 }
 
