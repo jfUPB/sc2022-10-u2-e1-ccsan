@@ -9,7 +9,7 @@
 #endif
 
 struct array
-{                                                          // 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
+{                                                         
     int *pdata;
     int size;
 };
