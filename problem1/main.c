@@ -57,7 +57,8 @@ void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOu
 {
     int position = 0;
     int repetido = 0;
-    arrOut->pdata = malloc(50);
+    //arrOut->pdata = malloc(50);
+    arrOut->pdata = malloc(sizeof(int));
     for (int i = 0; i < arrIn1->size; i++)
     {
        for (int k = 0; k < arrIn2->size; k++)
